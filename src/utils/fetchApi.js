@@ -1,13 +1,12 @@
-//import { useEffect, useState } from "react"
 
 
-
-export const getApi = async (url, endPoint) => {
-    let response = await fetch(url + endPoint)
-    let data = await response.json()
-    console.log("get data API")
-    console.log(response)
-    return data
+export const fetchData = async (url, endPoint) => {
+        const response = await fetch(url + endPoint)
+        const jsonData = await response.json()
+        if (typeof jsonData !== "object"){
+            throw new Error(jsonData)
+        }
+        return jsonData
 }
 
 

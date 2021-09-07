@@ -1,0 +1,7 @@
+.RadarChart-container{
+    background-color: #282D30;
+}
+
+.recharts-polar-grid-angle line{
+    stroke: none
+}

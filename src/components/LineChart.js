@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { getApi } from '../utils/test_api';
+import { fetchData } from '../utils/fetchApi';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend,Label,Text, ResponsiveContainer } from 'recharts';
 import '../style/LineChart.css'
 
@@ -7,21 +7,19 @@ function AverageSession (){
 
     const [datas , setData] = useState({})
     const [isDataLoading , setDataloading] = useState(false)
-    const [error, setError] = useState(null)
+    const [errorMessage, setErrorMessage] = useState("")
 
 
     useEffect(()=>{
         async function getData (){
             try { 
-                const perfDatas = await getApi("http://localhost:3000/" , "user/18/average-sessions")
+                const perfDatas = await fetchData("http://localhost:3000/" , "user/18/average-sessions")
                 setData(perfDatas.data.sessions)
-                console.log("promesse linechart ok")
-                console.log(datas)
+                setDataloading(false)
             } catch (error){
-                console.log(error)
-                setError(true)
+                setErrorMessage(error.message)
             } finally{
-                setDataloading(true)
+                setDataloading(false)
             }
         }
         getData()
@@ -43,18 +41,18 @@ function AverageSession (){
         
 
     return (
-        datas && (
-            <ResponsiveContainer width={500} height={500} className="lineChar-container">
+        errorMessage === "" && !isDataLoading ?  (
+            <ResponsiveContainer width={500} height={500} className="lineChart-container">
                 <LineChart width={300} height={100} data={datas}>
                     <YAxis domain={['dataMin - 5','auto']} axisLine={false} tick={false} />
                     <XAxis dataKey="day" type={'category'} tickFormatter={formatXaxis} axisLine={false} tickLine={false} stroke="#fff"/>
                     <Legend verticalAlign="top" height={0}/>
                     <Line name="Durée moyenne des sessions" type="monotone" dataKey="sessionLength" stroke="#fff" strokeWidth={2} dot={false} />
-                </LineChart>
-                
+                </LineChart>   
            </ResponsiveContainer>
+        ):(
+            errorMessage !== "" ? <div>{errorMessage}</div> : <div>Loading...</div>
         )
-        
     )
 }
 
