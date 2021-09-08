@@ -1,0 +1,39 @@
+.header {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.2rem;
+    align-items: center;
+    background-color:#020203;
+    box-shadow: 0px 4px 4px rgba(0,0,0,0.25);
+    width: 100%;
+}
+
+.main-logo{
+    width : 178px;
+}
+
+.main-nav{
+    flex-grow: 2;
+    display: flex;
+
+}
+.main-nav-link__color{
+    color: white;
+}
+
+.main-nav-list__link{
+    list-style-type: none;
+    width:100%;
+    display: flex;
+    justify-content: space-around;
+    color: #ff60;
+}
+
+.main-nav-link{
+    text-decoration: none;
+}
+
+.main-nav-link.current{
+    text-decoration: underline;
+    color: white;
+}

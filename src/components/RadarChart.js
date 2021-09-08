@@ -36,14 +36,17 @@ function RadarPerf (){
     //         </g>
     //       )
     // }
+    const formatPolarAxis = (tickItem) => { 
+            return datas.kind[tickItem]
+    }
 
     return (
         errorMessage === "" && !isDataLoading ? (
-            <ResponsiveContainer width={500} height={500}className="RadarChart-container">
-                <RadarChart cx="50%" cy="50%" outerRadius="80%"  data={datas.data}>
+            <ResponsiveContainer width="33%" height={263}className="RadarChart-container">
+                <RadarChart cx="50%" cy="50%" outerRadius="70%"  data={datas.data}>
                     <PolarGrid gridType='polygon'/>
-                    <PolarAngleAxis dataKey="kind" />
-                    <PolarRadiusAxis domain={[0,280]} tick={false} axisLine={false}/>
+                    <PolarAngleAxis dataKey="kind" tickFormatter={formatPolarAxis} stroke="#fff" tickLine={false} fontSize={10}/>
+                    <PolarRadiusAxis domain={[0,280]} tick={false} axisLine={false} tickCount={5}/>
                     <Radar name="18" dataKey="value" fill="#FF0101" fillOpacity={0.7} />
                 </RadarChart>
            </ResponsiveContainer>

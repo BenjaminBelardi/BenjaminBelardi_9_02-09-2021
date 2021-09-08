@@ -1,15 +1,18 @@
 
-import './App.css';
-import RadarPerf from './components/RadarChart';
-import AverageSession from './components/LineChart';
-import Score from './components/PieChart';
+import './style/App.css';
+import { BrowserRouter as Router , Route, Switch} from "react-router-dom";
+import Header from './components/Header';
+import Accueil from './pages/Accueil';
 
 function App() {
   return (
     <div className="App">
-      <RadarPerf />
-      <AverageSession />
-      <Score />
+      <Router>
+        <Route exact path="/">
+          <Header />
+          <Accueil />
+        </Route>
+      </Router>
     </div>
   );
 }
