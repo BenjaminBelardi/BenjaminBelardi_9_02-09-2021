@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { fetchData } from "../utils/fetchApi"
 import { PieChart, Pie,Cell, Sector, Label, ResponsiveContainer } from "recharts"
+import '../style/PieChart.css'
 
 
 function Score (){
@@ -28,7 +29,7 @@ function Score (){
 
     return (
         errorMessage === "" && !isDataLoading ?  (
-            <ResponsiveContainer width="33%" height={263} className="PieChart-container">
+            <ResponsiveContainer width="100%" height="100%" className="PieChart-container">
                 <PieChart>
                     <Pie
                        data={datas}

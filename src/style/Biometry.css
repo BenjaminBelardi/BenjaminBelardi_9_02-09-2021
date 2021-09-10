@@ -1,0 +1,27 @@
+.biometry-thumb-container{
+    display: flex;
+    height: 124px;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #fbfbfb;
+    /*box-shadow: 0 2px 4px rgba(0, 0, 0.0212249);*/
+    border-radius: 5px;
+    width: 258px;
+}
+
+.biometry-info{
+    display: flex;
+    flex-direction: column;
+    margin-right: 2rem;
+}
+
+.biometry-value{    
+    font-size: 20px;
+    font-weight: 700;
+
+}
+
+.biometry-type{
+    font-size: 14px;
+
+}

@@ -34,7 +34,7 @@ function SportNav (){
                     </li>
                 </NavLink>
             </ul>
-            <span>Copirygth, SportSee 2020</span>
+            <span className="sport-nav_copyright">Copirygth, SportSee 2020</span>
         </nav>
     )
 

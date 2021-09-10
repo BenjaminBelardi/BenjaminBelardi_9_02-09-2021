@@ -42,7 +42,7 @@ function RadarPerf (){
 
     return (
         errorMessage === "" && !isDataLoading ? (
-            <ResponsiveContainer width="33%" height={263}className="RadarChart-container">
+            <ResponsiveContainer width="100%" height="100%" className="RadarChart-container">
                 <RadarChart cx="50%" cy="50%" outerRadius="70%"  data={datas.data}>
                     <PolarGrid gridType='polygon'/>
                     <PolarAngleAxis dataKey="kind" tickFormatter={formatPolarAxis} stroke="#fff" tickLine={false} fontSize={10}/>

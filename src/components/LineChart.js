@@ -40,7 +40,7 @@ function AverageSession (){
 
     return (
         errorMessage === "" && !isDataLoading ?  (
-            <ResponsiveContainer width="33%" height={263} className="lineChart-container">
+            <ResponsiveContainer width="100%" height="100%" className="lineChart-container">
                 <LineChart data={datas}
                            margin={{left :-50 , right: 10}} 
                            width="100%"
@@ -48,9 +48,19 @@ function AverageSession (){
                     <YAxis domain={['dataMin - 5','dataMax + 20']} 
                            axisLine={false} 
                            tick={false}
+                           dataKey="sessionLength"
+                           type={'number'}
                         //    label={{value: 'durée moyenne des sessions', position:"insideTopLeft", offset: 50 }}
                            />
-                    <XAxis dataKey="day" type={'category'} tickFormatter={formatXaxis} axisLine={false} tickLine={false} stroke="#fff" tickMargin={0}/>
+                    <XAxis dataKey="day" 
+                           type={'category'} 
+                           tickFormatter={formatXaxis} 
+                           axisLine={false} 
+                           tickLine={false} 
+                           stroke="#fff" 
+                           tickMargin={0}/>
+
+                    <Tooltip  cursor={false} formatter={(value , name, props ) => value + "min" }/>
                     <Line name="Durée moyenne des sessions" 
                           type="monotone" 
                           dataKey="sessionLength" 

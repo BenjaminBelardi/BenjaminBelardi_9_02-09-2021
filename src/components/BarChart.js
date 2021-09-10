@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { fetchData } from "../utils/fetchApi"
 import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts'
+import '../style/DaylyActivity.css'
 
 
 function DaylyActivity (){
@@ -36,7 +37,7 @@ function DaylyActivity (){
     return (
         console.log(datas),
         errorMessage === "" && !isDataLoading ?  (
-            <ResponsiveContainer width="100%" height={263} className="BarChart-container">
+            <ResponsiveContainer width="100%" height="100%" className="BarChart-container">
             <BarChart
                 // width={500}
                 height={263}
@@ -52,7 +53,7 @@ function DaylyActivity (){
           <XAxis dataKey="day" tickCount={3} />
           <YAxis orientation="right" dataKey="calories" tickCount={3}/>
           <Tooltip />
-          <Legend verticalAlign="top" align="right" iconType="circle" formatter={renderColorLegentText} wrapperStyle={{paddingBottom: '30px'}}/>
+          <Legend verticalAlign="top" align="right" iconType="circle" formatter={renderColorLegentText} wrapperStyle={{paddingBottom: '50px'}}/>
           <Bar dataKey="kilogram" fill={COLORS[0]} barSize={7} barCategoryGap={50} radius={[3,3,0,0]}/>
           <Bar dataKey="calories" fill={COLORS[1]}  barSize={7}  radius={[3,3,0,0]} />
         </BarChart>   

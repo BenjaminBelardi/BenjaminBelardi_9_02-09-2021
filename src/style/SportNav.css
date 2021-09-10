@@ -1,0 +1,31 @@
+.sport-nav{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    margin-bottom: 1.2rem;
+    align-items: center;
+    background-color:#020203;
+    box-shadow: 4px 0 10px rgba(0,0,0,0.25);
+    width: 117px;
+    height:100vh;
+}
+
+.sport-nav-list__link{
+    list-style-type: none;
+    width:100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    color: #ff60;
+    height: 33%;
+    margin-top: 7rem;
+}
+
+.sport-nav_copyright{
+    color: white;
+    transform: rotate(-90deg);
+    transform-origin: bottom;
+    white-space: nowrap;
+    font-size: 12px;
+    font-family: roboto;
+}
