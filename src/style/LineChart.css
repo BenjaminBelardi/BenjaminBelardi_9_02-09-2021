@@ -1,5 +1,30 @@
 .lineChart-container{
-    /*background-color: #FF0101;*/
+    position: relative;
     background:linear-gradient(to right,#FF0101 74%, #E60000 26%);
     border-radius: 5px;
+}
+.lineChart-title{
+    position: absolute;
+    margin: 0;
+    top:calc(25% - 48px/2 - 4.5px);
+    left:34px;
+    z-index: 10;
+    color: white;
+    font-size: 15px;
+    font-weight: 500;
+    width: 147px;
+    height: 48px;
+    opacity: 50%;
+}
+.lineChart-custom-tooltip{
+    background-color: white;
+    width: 2.2rem;
+    height: 1.5rem;
+   
+}
+.lineChart-custom-tooltip__label{
+    font-size: 8px;
+    text-align: center;
+    line-height: 1.5rem;
+    
 }

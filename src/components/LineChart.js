@@ -36,41 +36,53 @@ function AverageSession (){
     const formatXaxis = (tickItem) => {
             return day[tickItem]
         }
+        const CustomTooltip = ({ active, payload, label }) => {
+            if (active && payload && payload.length) {
+              return (
+                <div className="lineChart-custom-tooltip">
+                  <p className="lineChart-custom-tooltip__label">{`${payload[0].value} min`}</p>
+                </div>
+              );
+            }
+            return null;
+          };
         
 
     return (
         errorMessage === "" && !isDataLoading ?  (
-            <ResponsiveContainer width="100%" height="100%" className="lineChart-container">
-                <LineChart data={datas}
-                           margin={{left :-50 , right: 10}} 
-                           width="100%"
-                           >
-                    <YAxis domain={['dataMin - 5','dataMax + 20']} 
-                           axisLine={false} 
-                           tick={false}
-                           dataKey="sessionLength"
-                           type={'number'}
-                        //    label={{value: 'durée moyenne des sessions', position:"insideTopLeft", offset: 50 }}
-                           />
-                    <XAxis dataKey="day" 
-                           type={'category'} 
-                           tickFormatter={formatXaxis} 
-                           axisLine={false} 
-                           tickLine={false} 
-                           stroke="#fff" 
-                           tickMargin={0}/>
+            <div className='lineChart-container'>
+                <h4 className='lineChart-title'>Durée moyenne des sessions</h4>
+                <ResponsiveContainer width="100%" height="100%" className="lineChart-container">
+                    <LineChart data={datas}
+                            margin={{left :-50 , right: 10}} 
+                            width="100%"
+                            >
+                        <YAxis domain={['dataMin - 5','dataMax + 20']} 
+                            axisLine={false} 
+                            tick={false}
+                            dataKey="sessionLength"
+                            type={'number'}
+                            />
+                        <XAxis dataKey="day" 
+                            type={'category'} 
+                            tickFormatter={formatXaxis} 
+                            axisLine={false} 
+                            tickLine={false} 
+                            stroke="#fff" 
+                            tickMargin={0}/>
 
-                    <Tooltip  cursor={false} formatter={(value , name, props ) => value + "min" }/>
-                    <Line name="Durée moyenne des sessions" 
-                          type="monotone" 
-                          dataKey="sessionLength" 
-                          stroke="#fff" 
-                          strokeWidth={2} 
-                          dot={false}
-                    />
-                </LineChart>  
-                
-           </ResponsiveContainer>
+                        <Tooltip  cursor={false}  content={<CustomTooltip />} />
+                        <Line name="Durée moyenne des sessions" 
+                            type="monotone" 
+                            dataKey="sessionLength" 
+                            stroke="#fff" 
+                            strokeWidth={2} 
+                            dot={false}
+                        />
+                    </LineChart>  
+                    
+            </ResponsiveContainer>
+           </div>
         ):(
             errorMessage !== "" ? <div>{errorMessage}</div> : <div>Loading...</div>
         )

@@ -46,7 +46,7 @@ function RadarPerf (){
                 <RadarChart cx="50%" cy="50%" outerRadius="70%"  data={datas.data}>
                     <PolarGrid gridType='polygon'/>
                     <PolarAngleAxis dataKey="kind" tickFormatter={formatPolarAxis} stroke="#fff" tickLine={false} fontSize={10}/>
-                    <PolarRadiusAxis domain={[0,280]} tick={false} axisLine={false} tickCount={5}/>
+                    <PolarRadiusAxis domain={[0,300]} tick={false} axisLine={false} tickCount={6}/>
                     <Radar name="18" dataKey="value" fill="#FF0101" fillOpacity={0.7} />
                 </RadarChart>
            </ResponsiveContainer>

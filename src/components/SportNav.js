@@ -18,23 +18,23 @@ function SportNav (){
                         <Yoga />
                     </li>
                 </NavLink>
-                <NavLink className='sport-nav-link' activeClassName="current" to="/profil">
+                <NavLink className='sport-nav-link' activeClassName="current" to="/">
                     <li className='sport-nav-link__color'>
                         <Swim />
                     </li>
                 </NavLink>
-                <NavLink className='sport-nav-link' activeClassName="current" to="/reglage">
+                <NavLink className='sport-nav-link' activeClassName="current" to="/">
                     <li className='sport-nav-link__color'>
                         <Cycle />
                     </li>
                 </NavLink>
-                <NavLink className='sport-nav-link' activeClassName="current" to="/Communaute">
+                <NavLink className='sport-nav-link' activeClassName="current" to="/">
                     <li className='sport-nav-link__color'>
                         <Featness />
                     </li>
                 </NavLink>
             </ul>
-            <span className="sport-nav_copyright">Copirygth, SportSee 2020</span>
+            <span className="sport-nav_copyright">Copirygth, SportSee 2021</span>
         </nav>
     )
 

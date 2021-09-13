@@ -1,0 +1,32 @@
+.barChart-container{
+    position: relative;
+    background-color: #fbfbfb;
+    border-radius: 5px;
+    grid-column-start: 1;
+    grid-column-end: 4;
+
+}
+.barChart-title{
+    position: absolute;
+    margin: 0;
+    top:30px;
+    left:34px;
+    z-index: 10;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.barChart-custom-tooltip{
+    background-color:#E60000;
+    width: 2.4rem;
+    height: 4rem;
+}
+.barChart-custom-tooltip__label{
+    font-size: 7px;
+    text-align: center;
+    line-height: 2rem;
+    color: white;
+    padding: 0;
+    margin: 0;
+    
+}

@@ -73,7 +73,7 @@ function Home () {
             <article className="article-container">
                 <div className="title-container">
                     <h1>Bonjour <span>{userDatas.userInfos.firstName}</span></h1>
-                    <h3>Félicitation ! Vous avez explosé vos objectifs hier 👏</h3>
+                    <h3>Félicitation ! Vous avez explosé vos objectifs hier &#128079;</h3>
                 </div>
                 <section className="userStat-container">
                     <DaylyActivity />
