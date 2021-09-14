@@ -34,7 +34,7 @@ function SportNav (){
                     </li>
                 </NavLink>
             </ul>
-            <span className="sport-nav_copyright">Copirygth, SportSee 2021</span>
+            <span className="sport-nav_copyright">Copirygth, SportSee {new Date().getFullYear()}</span>
         </nav>
     )
 

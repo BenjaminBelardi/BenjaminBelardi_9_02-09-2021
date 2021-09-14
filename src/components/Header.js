@@ -14,16 +14,16 @@ function Header (){
                     <nav className='main-nav'>
                         <ul className='main-nav-list__link'>
                             <NavLink exact className='main-nav-link' activeClassName="current" to="/">
-                                <li className='main-nav-link__color'>Accueil</li>
+                                <li className='main-nav-link__color main-nav-link__font-size'>Accueil</li>
                             </NavLink>
                             <NavLink className='main-nav-link' activeClassName="current" to="/profil">
-                                <li className='main-nav-link__color'>Profil</li>
+                                <li className='main-nav-link__color main-nav-link__font-size'>Profil</li>
                             </NavLink>
                             <NavLink className='main-nav-link' activeClassName="current" to="/reglage">
-                                <li className='main-nav-link__color'>Réglage</li>
+                                <li className='main-nav-link__color main-nav-link__font-size'>Réglage</li>
                             </NavLink>
                             <NavLink className='main-nav-link' activeClassName="current" to="/Communaute">
-                                <li className='main-nav-link__color'>Communauté</li>
+                                <li className='main-nav-link__color main-nav-link__font-size'>Communauté</li>
                             </NavLink>
                         </ul>
                     </nav>

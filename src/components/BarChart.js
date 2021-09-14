@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { fetchData } from "../utils/fetchApi"
-import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Label } from 'recharts'
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer} from 'recharts'
 import '../style/BarChart.css'
 
-
+/* Componant DaylyActivity who used Bar Chart from Recharts library */
 function DaylyActivity (){
 
     const [datas , setData] = useState([])
@@ -28,7 +28,7 @@ function DaylyActivity (){
 
     const renderColorLegentText = (value) => {
         const style  = {color : "#74798C",
-                        fontSize : "14px"
+                        fontSize : "0.87rem"
                         }
         value = value === "kilogram" ? "Poids (kg)" : "Calories brûlées (Kcal)"
         return <span style={style}>{value}</span>
@@ -47,15 +47,17 @@ function DaylyActivity (){
         return null;
       };
 
+      const CustomXaxis = (value) => {
+          return value.substring(value.length - 1 ,value.length)
+      }
+
     return (
-        console.log(datas),
         errorMessage === "" && !isDataLoading ?  (
-            <div className="barChart-container">
-                <h4 className="barChart-title">Activité quotidienne</h4>
-                <ResponsiveContainer width="100%" height="100%" >
+        <div className="barChart-container">
+            <h4 className="barChart-title">Activité quotidienne</h4>
+            <ResponsiveContainer width="100%" height="100%" >
                 <BarChart
                     title="test"
-                    // width={500}
                     height={263}
                     data={datas}
                     margin={{
@@ -65,14 +67,47 @@ function DaylyActivity (){
                     bottom: 10,
                     }}
                 >
-            <CartesianGrid strokeDasharray="3 3" vertical={false} horizontalPoints={[]}/>
-            <XAxis dataKey="day" tickCount={3} />
-            <YAxis orientation="right" dataKey="calories" tickCount={3}/>
-            <Tooltip content={<CustomTooltip />}/>
-            <Legend verticalAlign="top" align="right" iconType="circle" formatter={renderColorLegentText} wrapperStyle={{paddingBottom: '50px' , paddingTop: '24px'}}/>
-            <Bar dataKey="kilogram" fill={COLORS[0]} barSize={7} barCategoryGap={50} radius={[3,3,0,0]}/>
-            <Bar dataKey="calories" fill={COLORS[1]}  barSize={7}  radius={[3,3,0,0]} />
-            </BarChart>   
+                    <CartesianGrid 
+                        strokeDasharray="3 3" 
+                        vertical={false} 
+                        horizontalPoints={[]}
+                    />
+                    <XAxis 
+                        dataKey="day" 
+                        tickLine={false} 
+                        tickFormatter={CustomXaxis} 
+                        tickMargin={10}
+                    />
+                    <YAxis 
+                        orientation="right" 
+                        dataKey="calories" 
+                        tickCount={3} 
+                        tickLine={false} 
+                        tickMargin={10}/>
+                    <Tooltip 
+                        content={<CustomTooltip />}
+                    />
+                    <Legend 
+                        verticalAlign="top" 
+                        align="right" 
+                        iconType="circle" 
+                        formatter={renderColorLegentText} 
+                        wrapperStyle={{paddingBottom: '50px' , paddingTop: '24px'}}
+                    />
+                    <Bar 
+                        dataKey="kilogram" 
+                        fill={COLORS[0]} 
+                        barSize={7} 
+                        barCategoryGap={50} 
+                        radius={[3,3,0,0]}
+                    />
+                    <Bar 
+                        dataKey="calories" 
+                        fill={COLORS[1]}  
+                        barSize={7}  
+                        radius={[3,3,0,0]}
+                    />
+                </BarChart>   
             </ResponsiveContainer>
         </div>
         ):(

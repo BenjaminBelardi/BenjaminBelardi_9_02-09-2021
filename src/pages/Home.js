@@ -1,20 +1,18 @@
-import React, { useEffect, useState  } from "react";
-import '../style/Home.css';
-import SportNav from '../components/SportNav';
-import RadarPerf from '../components/RadarChart';
-import AverageSession from '../components/LineChart';
-import Score from '../components/PieChart';
-import DaylyActivity from '../components/BarChart';
-import Biometry from "../components/Biometry";
+import React, { useEffect, useState  } from "react"
+import '../style/Home.css'
+import SportNav from '../components/SportNav'
+import RadarPerf from '../components/RadarChart'
+import AverageSession from '../components/LineChart'
+import Score from '../components/PieChart'
+import DaylyActivity from '../components/BarChart'
+import Biometry from "../components/Biometry"
 import {ReactComponent as Calories} from '../assets/biometry/calories-icon.svg'
 import {ReactComponent as Proteines} from '../assets/biometry/proteines-icon.svg'
 import {ReactComponent as Glucides} from '../assets/biometry/glucides-icon.svg'
 import {ReactComponent as Lipides} from '../assets/biometry/lipides-icon.svg'
-
-import { fetchData } from '../utils/fetchApi';
+import { fetchData } from '../utils/fetchApi'
 
 function Home () {
-
         const [userDatas , setUserData] = useState({})
         const [isDataLoading , setDataloading] = useState(true)
         const [errorMessage, setErrorMessage] = useState("")
@@ -57,16 +55,16 @@ function Home () {
 
         }
 
-        // const addBiometricComponant = (biometricData) => {
-        //     Object.keys(biometricData).forEach(data => {
-        //         return (
-        //             <Biometry icon={<Calorie />}  value={biometricData[data]} unit={typeUnit[data].unit} type={typeUnit[data].type}/>
-        //         )
-        //     });
-        // }
+    // const addBiometricComponant = (biometricData) => {
+    //     Object.keys(biometricData).map(data => {
+    //         const IconType = typeUnit[data].componant
+    //         return (
+    //             <Biometry icon={<IconType />}  value={userDatas.keyData[data]} unit={typeUnit[data].unit} type={typeUnit[data].type}/>
+    //         )
+    //     })
+    // }
 
     return (
-        console.log(userDatas.keyData),
         errorMessage === "" && !isDataLoading ?  (
         <main className="main-container">
             <SportNav />
@@ -79,13 +77,13 @@ function Home () {
                     <DaylyActivity />
                     <AverageSession />
                     <RadarPerf />
-                    <Score />
+                    <Score userDatas={userDatas}/>
                 </section>
                 <aside className="biometry-container">
                 {Object.keys(userDatas.keyData).map(data => {
                     const IconType = typeUnit[data].componant
                     return (
-                        <Biometry icon={<IconType />}  value={userDatas.keyData[data]} unit={typeUnit[data].unit} type={typeUnit[data].type}/>
+                        <Biometry key={typeUnit[data].type} icon={<IconType />}  value={userDatas.keyData[data]} unit={typeUnit[data].unit} type={typeUnit[data].type}/>
                     )
                 })}
                 </aside>

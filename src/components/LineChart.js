@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { fetchData } from '../utils/fetchApi';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend,Label,Text, ResponsiveContainer } from 'recharts';
+import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
 import '../style/LineChart.css'
 
 function AverageSession (){

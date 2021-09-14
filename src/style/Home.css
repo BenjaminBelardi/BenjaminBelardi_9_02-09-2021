@@ -1,27 +1,6 @@
 .main-container{
     display: flex;
 }
-/* .userStat{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    width:80%
-} */
-
-/* .article-container{
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    height: 100vh;
-    width: 100%;
-} */
-/* .biometry-container{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    margin-bottom: 1.2rem;
-    align-items: center;
-} */
 
 .article-container{
     display: grid;
@@ -35,6 +14,12 @@
     padding: 4rem 0;
     grid-column-start: 1;
     grid-column-end: 5;
+}
+.title-container > h1 {
+    margin: 0 0 2rem 0;
+}
+.title-container > h3{
+    margin: 0;
 }
 
 .title-container h1{

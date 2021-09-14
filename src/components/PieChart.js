@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { fetchData } from "../utils/fetchApi"
-import { PieChart, Pie,Cell, Sector, Label, ResponsiveContainer } from "recharts"
+import { PieChart, Pie,Cell, Label, ResponsiveContainer } from "recharts"
 import '../style/PieChart.css'
 
 
