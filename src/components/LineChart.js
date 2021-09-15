@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react'
+import PropTypes from 'prop-types'
 import { fetchData } from '../utils/fetchApi';
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
 import '../style/LineChart.css'
 
-function AverageSession (){
+function AverageSession (props){
 
+    const { urlBase, userId} = props
     const [datas , setData] = useState([])
     const [isDataLoading , setDataloading] = useState(true)
     const [errorMessage, setErrorMessage] = useState("")
@@ -13,7 +15,7 @@ function AverageSession (){
     useEffect(()=>{
         async function getData (){
             try { 
-                const sessionsDatas = await fetchData("http://localhost:3000/" , "user/18/average-sessions")
+                const sessionsDatas = await fetchData(urlBase , "user/" + userId + "/average-sessions")
                 setData(sessionsDatas.data.sessions)
                 setDataloading(false)
             } catch (error){
@@ -21,7 +23,7 @@ function AverageSession (){
             }
         }
         getData()
-    }, [])
+    }, [urlBase,userId])
 
     const day = {
         1: "L",
@@ -87,6 +89,10 @@ function AverageSession (){
             errorMessage !== "" ? <div>{errorMessage}</div> : <div>Loading...</div>
         )
     )
+}
+AverageSession.propTypes = {
+    urlBase: PropTypes.string.isRequired,
+    userId: PropTypes.number.isRequired
 }
 
 export default AverageSession

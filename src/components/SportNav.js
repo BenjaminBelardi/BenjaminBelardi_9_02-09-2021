@@ -7,8 +7,8 @@ import {ReactComponent as Featness } from '../assets/featness-icon.svg'
 
 import '../style/SportNav.css'
 
+/* Left navigation bar componant */
 function SportNav (){
-
 
     return(
         <nav className='sport-nav'>

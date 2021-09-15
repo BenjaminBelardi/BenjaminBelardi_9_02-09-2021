@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react'
+import PropTypes from 'prop-types'
 import {Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, ResponsiveContainer } from 'recharts';
 import { fetchData } from '../utils/fetchApi';
 import '../style/RadarChart.css'
 
     
 
-function RadarPerf (){
+function RadarPerf (props){
 
+    const { urlBase, userId} = props
     const [datas , setData] = useState({})
     const [isDataLoading , setDataloading] = useState(true)
     const [errorMessage, setErrorMessage] = useState("")
@@ -15,7 +17,7 @@ function RadarPerf (){
     useEffect(()=>{
         async function getData (){
             try { 
-                const perfDatas = await fetchData("http://localhost:3000/" , "user/18/performance")
+                const perfDatas = await fetchData(urlBase , "user/"+ userId + "/performance")
                 setData(perfDatas.data)
                 setDataloading(false)
             } catch (error){
@@ -23,7 +25,7 @@ function RadarPerf (){
             } 
         }
         getData()
-    }, [])
+    }, [urlBase,userId])
      
     /*This function allow to transform the first string character to upercase */
     function strUcFirst(str){
@@ -35,14 +37,38 @@ function RadarPerf (){
     }
 
     return (
-        console.log(datas),
         errorMessage === "" && !isDataLoading ? (
-            <ResponsiveContainer width="100%" height="100%" className="RadarChart-container">
-                <RadarChart cx="50%" cy="50%" outerRadius="70%"  data={datas.data}>
+            <ResponsiveContainer 
+                width="100%" 
+                height="100%" 
+                className="RadarChart-container"
+            >
+                <RadarChart 
+                    cx="50%" 
+                    cy="50%" 
+                    outerRadius="70%"  
+                    data={datas.data}
+                >
                     <PolarGrid gridType='polygon'/>
-                    <PolarAngleAxis dataKey="kind" type='category' tickFormatter={formatPolarAxis} stroke="#fff" tickLine={false} fontSize={10}/>
-                    <PolarRadiusAxis domain={[0,300]} tick={false} axisLine={false} tickCount={6}/>
-                    <Radar name="18" dataKey="value" fill="#FF0101" fillOpacity={0.7} />
+                    <PolarAngleAxis 
+                        dataKey="kind" 
+                        type='category' 
+                        tickFormatter={formatPolarAxis} 
+                        stroke="#fff" 
+                        tickLine={false} 
+                        fontSize={10}
+                    />
+                    <PolarRadiusAxis 
+                        domain={[0,300]} 
+                        tick={false} 
+                        axisLine={false} 
+                        tickCount={6}/>
+                    <Radar 
+                        name="18" 
+                        dataKey="value" 
+                        fill="#FF0101" 
+                        fillOpacity={0.7} 
+                    />
                 </RadarChart>
            </ResponsiveContainer>
         ) : (
@@ -50,6 +76,11 @@ function RadarPerf (){
         )
         
     )
+}
+
+RadarPerf.propTypes = {
+    urlBase: PropTypes.string.isRequired,
+    userId: PropTypes.number.isRequired
 }
 
 export default RadarPerf

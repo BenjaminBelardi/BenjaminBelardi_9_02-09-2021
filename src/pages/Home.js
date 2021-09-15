@@ -12,7 +12,14 @@ import {ReactComponent as Glucides} from '../assets/biometry/glucides-icon.svg'
 import {ReactComponent as Lipides} from '../assets/biometry/lipides-icon.svg'
 import { fetchData } from '../utils/fetchApi'
 
+
+
+/* Home componant who caontain all user Datas */
 function Home () {
+        // global const API
+        const URL_BASE = "http://localhost:3000/"
+        const USER_ID = 18
+
         const [userDatas , setUserData] = useState({})
         const [isDataLoading , setDataloading] = useState(true)
         const [errorMessage, setErrorMessage] = useState("")
@@ -20,7 +27,7 @@ function Home () {
         useEffect(()=>{
             async function getData (){
                 try { 
-                    const userMainDatas = await fetchData("http://localhost:3000/" , "user/18")
+                    const userMainDatas = await fetchData(URL_BASE , "user/" + USER_ID )
                     setUserData(userMainDatas.data)
                     setDataloading(false)
                 } catch (error){
@@ -30,6 +37,7 @@ function Home () {
             getData()
         }, [])
 
+        /* this object allow to create dynamically the Biometry componant with all needs props */ 
         const typeUnit = {
             calorieCount : {
                 type : "Calories",
@@ -55,15 +63,6 @@ function Home () {
 
         }
 
-    // const addBiometricComponant = (biometricData) => {
-    //     Object.keys(biometricData).map(data => {
-    //         const IconType = typeUnit[data].componant
-    //         return (
-    //             <Biometry icon={<IconType />}  value={userDatas.keyData[data]} unit={typeUnit[data].unit} type={typeUnit[data].type}/>
-    //         )
-    //     })
-    // }
-
     return (
         errorMessage === "" && !isDataLoading ?  (
         <main className="main-container">
@@ -74,10 +73,10 @@ function Home () {
                     <h3>Félicitation ! Vous avez explosé vos objectifs hier &#128079;</h3>
                 </div>
                 <section className="userStat-container">
-                    <DaylyActivity />
-                    <AverageSession />
-                    <RadarPerf />
-                    <Score userDatas={userDatas}/>
+                    <DaylyActivity urlBase={URL_BASE} userId={USER_ID}/>
+                    <AverageSession urlBase={URL_BASE} userId={USER_ID}/>
+                    <RadarPerf urlBase={URL_BASE} userId={USER_ID}/>
+                    <Score urlBase={URL_BASE} userId={USER_ID}/>
                 </section>
                 <aside className="biometry-container">
                 {Object.keys(userDatas.keyData).map(data => {
