@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { fetchData } from "../utils/fetchApi"
+import PropTypes from 'prop-types'
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer} from 'recharts'
 import '../style/BarChart.css'
 
 /* Componant DaylyActivity who used Bar Chart from Recharts library */
-function DaylyActivity (){
+function DaylyActivity (props){
 
+    const { urlBase, userId} = props
     const [datas , setData] = useState([])
     const [isDataLoading , setDataloading] = useState(true)
     const [errorMessage, setErrorMessage] = useState("")
@@ -14,7 +16,7 @@ function DaylyActivity (){
     useEffect(()=>{
         async function getData (){
             try { 
-                const activityData = await fetchData("http://localhost:3000/" , "user/18/activity")
+                const activityData = await fetchData(urlBase , "user/" + userId + "/activity")
                 setData(activityData.data.sessions)
                 setDataloading(false)
             } catch (error){
@@ -22,7 +24,7 @@ function DaylyActivity (){
             }
         }
         getData()
-    },[])
+    },[urlBase,userId])
 
 
 
@@ -47,6 +49,7 @@ function DaylyActivity (){
         return null;
       };
 
+    /* return the last character of the string */
       const CustomXaxis = (value) => {
           return value.substring(value.length - 1 ,value.length)
       }
@@ -114,6 +117,11 @@ function DaylyActivity (){
             errorMessage !== "" ? <div>{errorMessage}</div> : <div>Loading...</div>
         )
     )
+}
+
+DaylyActivity.propTypes = {
+    urlBase: PropTypes.string.isRequired,
+    userId: PropTypes.number.isRequired
 }
 
 export default DaylyActivity
