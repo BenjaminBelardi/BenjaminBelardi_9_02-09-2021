@@ -1,0 +1,244 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> components/LineChart.js</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+             
+                <a class="image" href="index.html">
+                    <img src="../src/assets/logo.svg" alt="logo">
+                </a>
+            
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    API Documentation
+                </a>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Components</h3><ul><li><a href="AverageSession.html">AverageSession</a></li><li><a href="Biometry.html">Biometry</a></li><li><a href="DaylyActivity.html">DaylyActivity</a></li><li><a href="Header.html">Header</a></li><li><a href="Home.html">Home</a></li><li><a href="RadarPerf.html">RadarPerf</a></li><li><a href="Score.html">Score</a></li><li><a href="SportNav.html">SportNav</a></li></ul><h3>Global</h3><ul><li><a href="global.html#fetchData">fetchData</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Source</p>
+                    <h1>components/LineChart.js</h1>
+                </header>
+                
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { useEffect, useState } from 'react'
+import PropTypes from 'prop-types'
+import { fetchData } from '../utils/fetchApi';
+import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
+import '../style/LineChart.css'
+
+
+/**
+ * Component showing the user's dayly sport session time in Line chart
+ * @component 
+ * @returns {component}
+ * &lt;DaylyActivity urlBase={URL_BASE} userId={USER_ID}/>
+ * 
+ */
+
+function AverageSession (props){
+
+    const { urlBase, userId} = props
+    const [datas , setData] = useState([])
+    const [isDataLoading , setDataloading] = useState(true)
+    const [errorMessage, setErrorMessage] = useState("")
+
+
+    useEffect(()=>{
+        async function getData (){
+            try { 
+                const sessionsDatas = await fetchData(urlBase , "user/" + userId + "/average-sessions")
+                setData(sessionsDatas.data.sessions)
+                setDataloading(false)
+            } catch (error){
+                setErrorMessage(error.message)
+            }
+        }
+        getData()
+    }, [urlBase,userId])
+
+    const day = {
+        1: "L",
+        2: "M",
+        3: "M",
+        4: "J",
+        5: "V",
+        6: "S",
+        7: "D",
+    }
+
+    /**
+     * Converted the default line chart Xaxis value to the weekday name
+     * @param {string} tickItem default line chart Xaxis value 
+     * @returns The first letter of weekday name
+     */
+    const formatXaxis = (tickItem) => {
+            return day[tickItem]
+        }
+    
+    /**
+     * Adds the unit of tip value
+     * @param {object } tooltip { active, payload, label } see recharts doc
+     * @returns tip value with unit
+     */
+    const CustomTooltip = ({ active, payload, label }) => {
+        if (active &amp;&amp; payload &amp;&amp; payload.length) {
+            return (
+            &lt;div className="lineChart-custom-tooltip">
+                &lt;p className="lineChart-custom-tooltip__label">{`${payload[0].value} min`}&lt;/p>
+            &lt;/div>
+            );
+        }
+        return null;
+        };
+        
+
+    return (
+        errorMessage === "" &amp;&amp; !isDataLoading ?  (
+            &lt;div className='lineChart-container'>
+                &lt;h4 className='lineChart-title'>Durée moyenne des sessions&lt;/h4>
+                &lt;ResponsiveContainer width="100%" height="100%" className="lineChart-container">
+                    &lt;LineChart data={datas}
+                            margin={{left :-50 , right: 10}} 
+                            width="100%"
+                            >
+                        &lt;YAxis domain={['dataMin - 5','dataMax + 20']} 
+                            axisLine={false} 
+                            tick={false}
+                            dataKey="sessionLength"
+                            type={'number'}
+                            />
+                        &lt;XAxis dataKey="day" 
+                            type={'category'} 
+                            tickFormatter={formatXaxis} 
+                            axisLine={false} 
+                            tickLine={false} 
+                            stroke="#fff" 
+                            tickMargin={0}/>
+
+                        &lt;Tooltip  cursor={false}  content={&lt;CustomTooltip />} />
+                        &lt;Line name="Durée moyenne des sessions" 
+                            type="monotone" 
+                            dataKey="sessionLength" 
+                            stroke="#fff" 
+                            strokeWidth={2} 
+                            dot={false}
+                        />
+                    &lt;/LineChart>  
+                    
+            &lt;/ResponsiveContainer>
+           &lt;/div>
+        ):(
+            errorMessage !== "" ? &lt;div>{errorMessage}&lt;/div> : &lt;div>Loading...&lt;/div>
+        )
+    )
+}
+
+AverageSession.propTypes = {
+    /**
+     * Url base to call the API
+     */
+    urlBase: PropTypes.string.isRequired,
+    /**
+     * User's ID
+     */
+    userId: PropTypes.number.isRequired
+}
+
+export default AverageSession</code></pre>
+        </article>
+    </section>
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by 
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+</body>
+</html>

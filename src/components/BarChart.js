@@ -4,14 +4,23 @@ import PropTypes from 'prop-types'
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer} from 'recharts'
 import '../style/BarChart.css'
 
-/* Componant DaylyActivity who used Bar Chart from Recharts library */
+
+/**
+ * Component for showing user's dayly activity in bar chart.
+ * @component 
+ * 
+ * @returns {component}
+ *  <DaylyActivity urlBase={URL_BASE} userId={USER_ID}/>
+ * 
+ */
+
 function DaylyActivity (props){
 
     const { urlBase, userId} = props
     const [datas , setData] = useState([])
     const [isDataLoading , setDataloading] = useState(true)
     const [errorMessage, setErrorMessage] = useState("")
-    const COLORS = ['#282D30', '#E60000'];
+    const COLORS = ['#282D30', '#E60000']
 
     useEffect(()=>{
         async function getData (){
@@ -27,7 +36,11 @@ function DaylyActivity (props){
     },[urlBase,userId])
 
 
-
+    /**
+     *  Modify the style and texte of bar chart legend.
+     * @param {string} value actual legend text
+     * @returns html element
+     */
     const renderColorLegentText = (value) => {
         const style  = {color : "#74798C",
                         fontSize : "0.87rem"
@@ -36,7 +49,11 @@ function DaylyActivity (props){
         return <span style={style}>{value}</span>
     }
 
-   
+   /**
+    * Modify the tip bar chart
+    * @param {object}  tooltip  {active , payload,  label} 
+    * @returns html element with new payload value
+    */
     const CustomTooltip = ({ active, payload, label }) => {
         if (active && payload && payload.length) {
           return (
@@ -44,12 +61,16 @@ function DaylyActivity (props){
               <p className="barChart-custom-tooltip__label">{`${payload[0].value}kg`}</p>
               <p className="barChart-custom-tooltip__label">{`${payload[1].value}Kcal`}</p>
             </div>
-          );
+          )
         }
-        return null;
+        return null
       };
 
-    /* return the last character of the string */
+    /**
+     * Format the bar chart Xaxis 
+     * @param {string} value default value of Xaxis 
+     * @returns {string}    last character of the Xaxis value
+     */
       const CustomXaxis = (value) => {
           return value.substring(value.length - 1 ,value.length)
       }
@@ -119,8 +140,15 @@ function DaylyActivity (props){
     )
 }
 
+
 DaylyActivity.propTypes = {
+    /**
+     * Url base to call the API
+     */
     urlBase: PropTypes.string.isRequired,
+    /**
+     * User's ID
+     */
     userId: PropTypes.number.isRequired
 }
 

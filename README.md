@@ -1,22 +1,24 @@
 [![forthebadge](https://forthebadge.com/images/badges/made-with-javascript.svg)](https://forthebadge.com)
 [![forthebadge](https://forthebadge.com/images/badges/uses-css.svg)](https://forthebadge.com)
+[![React Logo](https://img.icons8.com/color/48/000000/react-native.png)](https://icons8.com/icon/123603/react-native)
 
-# SportSee : The most powerfull sport coatching 
+# SportSee : **The most powerful sport coaching**
 
-Sport See will aims to follow your sport progression day by day
 
-# Prerequisite
+SportSee your day-to-day sport progress companion
 
-Install `yarn` with `npm install -g yarn`
-Clone the backend Data from (https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard)
-and follow the associated Readme
+## Prerequisite
+
+1. Install `yarn` with `npm install -g yarn`.
+2. Clone the backend Data from [GitHub](https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard)
+and follow the associated Readme.
+3. Clone the front-end from [GitHub](https://github.com/BenjaminBelardi/BenjaminBelardi_9_02-09-2021).
 
 ## Before start
-You must run :
 
 ### `yarn install`
 
-Install all dependencies contain in the packadge.json
+Install all dependencies contained in the packadge.json
 
 ## Getting Started with Create React App
 
@@ -59,3 +61,9 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 ### `yarn build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+## Before pull request 
+
+### `yarn docs`
+
+Use Jsdoc and better-docs to comment the code to keep the documentation up to date.

@@ -7,7 +7,13 @@ import {ReactComponent as Featness } from '../assets/featness-icon.svg'
 
 import '../style/SportNav.css'
 
-/* Left navigation bar componant */
+
+/**
+ * Coponent showing the left navigation bar
+ * @component 
+ * @returns {component}
+ *  <SportNav />
+ */
 function SportNav (){
 
     return(

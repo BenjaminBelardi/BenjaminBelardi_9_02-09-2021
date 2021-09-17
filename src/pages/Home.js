@@ -14,7 +14,13 @@ import { fetchData } from '../utils/fetchApi'
 
 
 
-/* Home componant who caontain all user Datas */
+
+/**
+ * Component showing the home page
+ * @component 
+ * @returns {component} home page with all user's profil data
+ */
+
 function Home () {
         // global const API
         const URL_BASE = "http://localhost:3000/"

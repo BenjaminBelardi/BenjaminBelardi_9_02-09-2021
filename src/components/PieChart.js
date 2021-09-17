@@ -4,7 +4,14 @@ import { fetchData } from "../utils/fetchApi"
 import { PieChart, Pie,Cell, Label, ResponsiveContainer } from "recharts"
 import '../style/PieChart.css'
 
-
+/**
+ * Component showing the user's dayly activity progress in pie chart
+ * @component 
+ * @param {string} props.urlBase  Url base to call API
+ * @param {number} props.userID User's ID 
+ * @returns {component}
+ *  <Score urlBase={URL_BASE} userId={USER_ID}/>
+ */
 function Score (props){
 
     const { urlBase, userId} = props
@@ -74,7 +81,13 @@ function Score (props){
 }
 
 Score.propTypes = {
+    /**
+     * Url base to call the API
+     */
     urlBase: PropTypes.string.isRequired,
+    /**
+     * User's ID
+     */
     userId: PropTypes.number.isRequired
 }
 export default Score

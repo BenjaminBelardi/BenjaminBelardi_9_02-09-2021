@@ -4,6 +4,15 @@ import { fetchData } from '../utils/fetchApi';
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
 import '../style/LineChart.css'
 
+
+/**
+ * Component showing the user's dayly sport session time in Line chart
+ * @component 
+ * @returns {component}
+ * <DaylyActivity urlBase={URL_BASE} userId={USER_ID}/>
+ * 
+ */
+
 function AverageSession (props){
 
     const { urlBase, userId} = props
@@ -35,19 +44,30 @@ function AverageSession (props){
         7: "D",
     }
 
+    /**
+     * Converted the default line chart Xaxis value to the weekday name
+     * @param {string} tickItem default line chart Xaxis value 
+     * @returns The first letter of weekday name
+     */
     const formatXaxis = (tickItem) => {
             return day[tickItem]
         }
-        const CustomTooltip = ({ active, payload, label }) => {
-            if (active && payload && payload.length) {
-              return (
-                <div className="lineChart-custom-tooltip">
-                  <p className="lineChart-custom-tooltip__label">{`${payload[0].value} min`}</p>
-                </div>
-              );
-            }
-            return null;
-          };
+    
+    /**
+     * Adds the unit of tip value
+     * @param {object } tooltip { active, payload, label } see recharts doc
+     * @returns tip value with unit
+     */
+    const CustomTooltip = ({ active, payload, label }) => {
+        if (active && payload && payload.length) {
+            return (
+            <div className="lineChart-custom-tooltip">
+                <p className="lineChart-custom-tooltip__label">{`${payload[0].value} min`}</p>
+            </div>
+            );
+        }
+        return null;
+        };
         
 
     return (
@@ -90,8 +110,15 @@ function AverageSession (props){
         )
     )
 }
+
 AverageSession.propTypes = {
+    /**
+     * Url base to call the API
+     */
     urlBase: PropTypes.string.isRequired,
+    /**
+     * User's ID
+     */
     userId: PropTypes.number.isRequired
 }
 

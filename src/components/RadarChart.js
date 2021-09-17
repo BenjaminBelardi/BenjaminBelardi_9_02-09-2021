@@ -5,7 +5,14 @@ import { fetchData } from '../utils/fetchApi';
 import '../style/RadarChart.css'
 
     
-
+/**
+ * Component showing the user's activity type in radr chart
+ * @component 
+ * @param {string} props.urlBase  Url base to call API
+ * @param {number} props.userID User's ID 
+ * @returns {component}
+ *  <RadarPerf urlBase={URL_BASE} userId={USER_ID}/>
+ */
 function RadarPerf (props){
 
     const { urlBase, userId} = props
@@ -27,11 +34,21 @@ function RadarPerf (props){
         getData()
     }, [urlBase,userId])
      
-    /*This function allow to transform the first string character to upercase */
+    
+    /**
+     * Transform the first string character to uppercase
+     * @param {string} str 
+     * @returns {string} string with the first charater to uppercase
+     */
     function strUcFirst(str){
         return (str +'').charAt(0).toLocaleUpperCase() + str.substr(1)
     }
 
+    /**
+     * Converted the default radar chart polar axis value
+     * @param {string} tickItem default radar chart polar axis value 
+     * @returns a new polar axis value diffined in the datas.king object
+     */
     const formatPolarAxis = (tickItem) => { 
             return strUcFirst(datas.kind[tickItem])
     }
@@ -79,7 +96,13 @@ function RadarPerf (props){
 }
 
 RadarPerf.propTypes = {
+    /**
+     * Url base to call the API
+     */
     urlBase: PropTypes.string.isRequired,
+    /**
+     * User's ID
+     */
     userId: PropTypes.number.isRequired
 }
 

@@ -3,9 +3,14 @@ import {NavLink}  from "react-router-dom"
 import {ReactComponent as Logo} from '../assets/logo.svg'
 import '../style/Header.css'
 
+/**
+ * Component showing the main Header and navigation bar
+ *  @component
+ * 
+ *  @returns {component}
+ *  <Header />
+ */
 function Header (){
-
-
     return(
         <header className='header'>
                     <NavLink  exact to="/">   
