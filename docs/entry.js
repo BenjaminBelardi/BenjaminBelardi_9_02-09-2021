@@ -29,7 +29,7 @@ import Component1 from '../src/components/Biometry.js';
 reactComponents['Biometry'] = Component1;
 
 import Component2 from '../src/components/BarChart.js';
-reactComponents['DaylyActivity'] = Component2;
+reactComponents['DailyActivity'] = Component2;
 
 import Component3 from '../src/components/Header.js';
 reactComponents['Header'] = Component3;

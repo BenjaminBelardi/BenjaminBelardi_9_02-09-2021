@@ -4,7 +4,7 @@ import SportNav from '../components/SportNav'
 import RadarPerf from '../components/RadarChart'
 import AverageSession from '../components/LineChart'
 import Score from '../components/PieChart'
-import DaylyActivity from '../components/BarChart'
+import DailyActivity from '../components/BarChart'
 import Biometry from "../components/Biometry"
 import {ReactComponent as Calories} from '../assets/biometry/calories-icon.svg'
 import {ReactComponent as Proteines} from '../assets/biometry/proteines-icon.svg'
@@ -18,7 +18,7 @@ import { fetchData } from '../utils/fetchApi'
 /**
  * Component showing the home page
  * @component 
- * @returns {component} home page with all user's profil data
+ * @return {component} home page with all user's profil data
  */
 
 function Home () {
@@ -79,7 +79,7 @@ function Home () {
                     <h3>Félicitation ! Vous avez explosé vos objectifs hier &#128079;</h3>
                 </div>
                 <section className="userStat-container">
-                    <DaylyActivity urlBase={URL_BASE} userId={USER_ID}/>
+                    <DailyActivity urlBase={URL_BASE} userId={USER_ID}/>
                     <AverageSession urlBase={URL_BASE} userId={USER_ID}/>
                     <RadarPerf urlBase={URL_BASE} userId={USER_ID}/>
                     <Score urlBase={URL_BASE} userId={USER_ID}/>

@@ -4,14 +4,9 @@ import '../style/Biometry.css'
 
 
 /**
- * Component for showing the the biometry of the user 
+ * Component for showing the user's biometry
  * @component 
- * @param {component} props.icon Icon's svg component
- * @param {number} props.value User's biometry value
- * @param {string} props.unit User's biometry unit
- * @param {string} props.type User's biometry type
- * @returns {component}
- *  <Biometry key={typeUnit[data].type} icon={<IconType />}  value={userDatas.keyData[data]} unit={typeUnit[data].unit} type={typeUnit[data].type}/>
+ * @return {component} 
  * 
  */
 function Biometry (props){

@@ -5,12 +5,11 @@ import { PieChart, Pie,Cell, Label, ResponsiveContainer } from "recharts"
 import '../style/PieChart.css'
 
 /**
- * Component showing the user's dayly activity progress in pie chart
+ * Component showing the user's daily activities progress in pie chart
  * @component 
  * @param {string} props.urlBase  Url base to call API
  * @param {number} props.userID User's ID 
- * @returns {component}
- *  <Score urlBase={URL_BASE} userId={USER_ID}/>
+ * @returns {component} 
  */
 function Score (props){
 

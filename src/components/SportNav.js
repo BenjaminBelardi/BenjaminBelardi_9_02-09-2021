@@ -11,8 +11,7 @@ import '../style/SportNav.css'
 /**
  * Coponent showing the left navigation bar
  * @component 
- * @returns {component}
- *  <SportNav />
+ * @return {component}
  */
 function SportNav (){
 
@@ -40,7 +39,7 @@ function SportNav (){
                     </li>
                 </NavLink>
             </ul>
-            <span className="sport-nav_copyright">Copirygth, SportSee {new Date().getFullYear()}</span>
+            <span className="sport-nav_copyright">Copyrigth, SportSee {new Date().getFullYear()}</span>
         </nav>
     )
 

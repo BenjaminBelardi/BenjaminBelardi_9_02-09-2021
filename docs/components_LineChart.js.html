@@ -72,7 +72,7 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Components</h3><ul><li><a href="AverageSession.html">AverageSession</a></li><li><a href="Biometry.html">Biometry</a></li><li><a href="DaylyActivity.html">DaylyActivity</a></li><li><a href="Header.html">Header</a></li><li><a href="Home.html">Home</a></li><li><a href="RadarPerf.html">RadarPerf</a></li><li><a href="Score.html">Score</a></li><li><a href="SportNav.html">SportNav</a></li></ul><h3>Global</h3><ul><li><a href="global.html#fetchData">fetchData</a></li></ul></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Components</h3><ul><li><a href="AverageSession.html">AverageSession</a></li><li><a href="Biometry.html">Biometry</a></li><li><a href="DailyActivity.html">DailyActivity</a></li><li><a href="Header.html">Header</a></li><li><a href="Home.html">Home</a></li><li><a href="RadarPerf.html">RadarPerf</a></li><li><a href="Score.html">Score</a></li><li><a href="SportNav.html">SportNav</a></li></ul><h3>Global</h3><ul><li><a href="global.html#fetchData">fetchData</a></li></ul></div>
                 
             </nav>
         </div>
@@ -97,10 +97,9 @@ import '../style/LineChart.css'
 
 
 /**
- * Component showing the user's dayly sport session time in Line chart
+ * Component showing the user's daily sport session time in Line chart
  * @component 
- * @returns {component}
- * &lt;DaylyActivity urlBase={URL_BASE} userId={USER_ID}/>
+ * @return {component}
  * 
  */
 
@@ -138,7 +137,7 @@ function AverageSession (props){
     /**
      * Converted the default line chart Xaxis value to the weekday name
      * @param {string} tickItem default line chart Xaxis value 
-     * @returns The first letter of weekday name
+     * @return The first letter of weekday name
      */
     const formatXaxis = (tickItem) => {
             return day[tickItem]

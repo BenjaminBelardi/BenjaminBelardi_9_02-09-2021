@@ -5,7 +5,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> AverageSession</title>
+  <title> DailyActivity</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -78,7 +78,7 @@
             <div class="content">
                 <header class="page-title">
                     <p>Components</p>
-                    <h1>AverageSession</h1>
+                    <h1>DailyActivity</h1>
                 </header>
                 
 
@@ -90,7 +90,7 @@
 <header>
     
         <h2>
-            &ltAverageSession <i>urlBase</i> <i>userId</i> /&gt
+            &ltDailyActivity <i>urlBase</i> <i>userId</i> /&gt
         </h2>
         
     
@@ -110,12 +110,12 @@
 
 
     
-    <h4 class="name" id="AverageSession">
-        <a class="href-link" href="#AverageSession">#</a>
+    <h4 class="name" id="DailyActivity">
+        <a class="href-link" href="#DailyActivity">#</a>
         
         <span class="code-name">
             
-                &ltAverageSession <i>urlBase</i> <i>userId</i> /&gt
+                &ltDailyActivity <i>urlBase</i> <i>userId</i> /&gt
             
         </span>
     </h4>
@@ -124,7 +124,7 @@
     
     
     <div class="description">
-        <p>Component showing the user's daily sport session time in Line chart</p>
+        <p>Component for showing user's daily activities in bar chart.</p>
     </div>
     
 
@@ -217,9 +217,9 @@
 
     
         <p class="tag-source">
-            <a href="components_LineChart.js.html" class="button">View Source</a>
+            <a href="components_BarChart.js.html" class="button">View Source</a>
             <span>
-                <a href="components_LineChart.js.html">components/LineChart.js</a>, <a href="components_LineChart.js.html#line15">line 15</a>
+                <a href="components_BarChart.js.html">components/BarChart.js</a>, <a href="components_BarChart.js.html#line16">line 16</a>
             </span>
         </p>
     
@@ -319,7 +319,7 @@
     
     
     <div class="description">
-        <p>Adds the unit of tip value</p>
+        <p>Modify the tip bar chart</p>
     </div>
     
 
@@ -373,7 +373,7 @@
 
   
 
-  <td class="description last"><p>{ active, payload, label } see recharts doc</p></td>
+  <td class="description last"><p>{active , payload,  label}</p></td>
 </tr>
 
 
@@ -419,9 +419,9 @@
 
     
         <p class="tag-source">
-            <a href="components_LineChart.js.html" class="button">View Source</a>
+            <a href="components_BarChart.js.html" class="button">View Source</a>
             <span>
-                <a href="components_LineChart.js.html">components/LineChart.js</a>, <a href="components_LineChart.js.html#line60">line 60</a>
+                <a href="components_BarChart.js.html">components/BarChart.js</a>, <a href="components_BarChart.js.html#line56">line 56</a>
             </span>
         </p>
     
@@ -452,7 +452,7 @@
 
 <div class="columns">
     
-    <div class='param-desc column is-7'><p>tip value with unit</p></div>
+    <div class='param-desc column is-7'><p>html element with new payload value</p></div>
     
     
 </div>
@@ -470,8 +470,8 @@
 
 
     
-    <h4 class="name" id="~formatXaxis">
-        <a class="href-link" href="#~formatXaxis">#</a>
+    <h4 class="name" id="~CustomXaxis">
+        <a class="href-link" href="#~CustomXaxis">#</a>
         
             
                 <span class='tag'>inner</span>
@@ -479,7 +479,7 @@
         
         <span class="code-name">
             
-                formatXaxis<span class="signature">(tickItem)</span><span class="type-signature"></span>
+                CustomXaxis<span class="signature">(value)</span><span class="type-signature"> &rarr; {string}</span>
             
         </span>
     </h4>
@@ -488,7 +488,7 @@
     
     
     <div class="description">
-        <p>Converted the default line chart Xaxis value to the weekday name</p>
+        <p>Format the bar chart Xaxis</p>
     </div>
     
 
@@ -526,7 +526,7 @@
             
 <tr class="deep-level-0">
   
-      <td class="name"><code>tickItem</code></td>
+      <td class="name"><code>value</code></td>
   
 
   <td class="type">
@@ -542,7 +542,7 @@
 
   
 
-  <td class="description last"><p>default line chart Xaxis value</p></td>
+  <td class="description last"><p>default value of Xaxis</p></td>
 </tr>
 
 
@@ -588,9 +588,9 @@
 
     
         <p class="tag-source">
-            <a href="components_LineChart.js.html" class="button">View Source</a>
+            <a href="components_BarChart.js.html" class="button">View Source</a>
             <span>
-                <a href="components_LineChart.js.html">components/LineChart.js</a>, <a href="components_LineChart.js.html#line51">line 51</a>
+                <a href="components_BarChart.js.html">components/BarChart.js</a>, <a href="components_BarChart.js.html#line73">line 73</a>
             </span>
         </p>
     
@@ -621,7 +621,184 @@
 
 <div class="columns">
     
-    <div class='param-desc column is-7'><p>The first letter of weekday name</p></div>
+    <div class='param-desc column is-7'><p>last character of the Xaxis value</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<span class="param-type">string</span>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="~renderColorLegentText">
+        <a class="href-link" href="#~renderColorLegentText">#</a>
+        
+            
+                <span class='tag'>inner</span>
+            
+        
+        <span class="code-name">
+            
+                renderColorLegentText<span class="signature">(value)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Modify the style and texte of bar chart legend.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>value</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>actual legend text</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="components_BarChart.js.html" class="button">View Source</a>
+            <span>
+                <a href="components_BarChart.js.html">components/BarChart.js</a>, <a href="components_BarChart.js.html#line43">line 43</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>html element</p></div>
     
     
 </div>

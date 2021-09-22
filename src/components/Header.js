@@ -7,8 +7,7 @@ import '../style/Header.css'
  * Component showing the main Header and navigation bar
  *  @component
  * 
- *  @returns {component}
- *  <Header />
+ *  @return {component}
  */
 function Header (){
     return(

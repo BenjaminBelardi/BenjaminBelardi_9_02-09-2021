@@ -6,12 +6,11 @@ import '../style/RadarChart.css'
 
     
 /**
- * Component showing the user's activity type in radr chart
+ * Component showing the user's activities type in radr chart
  * @component 
  * @param {string} props.urlBase  Url base to call API
  * @param {number} props.userID User's ID 
- * @returns {component}
- *  <RadarPerf urlBase={URL_BASE} userId={USER_ID}/>
+ * @return {component} 
  */
 function RadarPerf (props){
 
@@ -38,7 +37,7 @@ function RadarPerf (props){
     /**
      * Transform the first string character to uppercase
      * @param {string} str 
-     * @returns {string} string with the first charater to uppercase
+     * @return {string} string with the first charater to uppercase
      */
     function strUcFirst(str){
         return (str +'').charAt(0).toLocaleUpperCase() + str.substr(1)
@@ -47,7 +46,7 @@ function RadarPerf (props){
     /**
      * Converted the default radar chart polar axis value
      * @param {string} tickItem default radar chart polar axis value 
-     * @returns a new polar axis value diffined in the datas.king object
+     * @return a new polar axis value diffined in the datas.king object
      */
     const formatPolarAxis = (tickItem) => { 
             return strUcFirst(datas.kind[tickItem])

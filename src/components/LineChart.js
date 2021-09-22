@@ -6,10 +6,9 @@ import '../style/LineChart.css'
 
 
 /**
- * Component showing the user's dayly sport session time in Line chart
+ * Component showing the user's daily sport session time in Line chart
  * @component 
- * @returns {component}
- * <DaylyActivity urlBase={URL_BASE} userId={USER_ID}/>
+ * @return {component}
  * 
  */
 
@@ -47,7 +46,7 @@ function AverageSession (props){
     /**
      * Converted the default line chart Xaxis value to the weekday name
      * @param {string} tickItem default line chart Xaxis value 
-     * @returns The first letter of weekday name
+     * @return The first letter of weekday name
      */
     const formatXaxis = (tickItem) => {
             return day[tickItem]

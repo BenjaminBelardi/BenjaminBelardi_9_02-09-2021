@@ -6,15 +6,14 @@ import '../style/BarChart.css'
 
 
 /**
- * Component for showing user's dayly activity in bar chart.
+ * Component for showing user's daily activities in bar chart.
  * @component 
  * 
- * @returns {component}
- *  <DaylyActivity urlBase={URL_BASE} userId={USER_ID}/>
- * 
+ * @return {component}
+ *
  */
 
-function DaylyActivity (props){
+function DailyActivity (props){
 
     const { urlBase, userId} = props
     const [datas , setData] = useState([])
@@ -39,7 +38,7 @@ function DaylyActivity (props){
     /**
      *  Modify the style and texte of bar chart legend.
      * @param {string} value actual legend text
-     * @returns html element
+     * @return html element
      */
     const renderColorLegentText = (value) => {
         const style  = {color : "#74798C",
@@ -52,7 +51,7 @@ function DaylyActivity (props){
    /**
     * Modify the tip bar chart
     * @param {object}  tooltip  {active , payload,  label} 
-    * @returns html element with new payload value
+    * @return html element with new payload value
     */
     const CustomTooltip = ({ active, payload, label }) => {
         if (active && payload && payload.length) {
@@ -69,7 +68,7 @@ function DaylyActivity (props){
     /**
      * Format the bar chart Xaxis 
      * @param {string} value default value of Xaxis 
-     * @returns {string}    last character of the Xaxis value
+     * @return {string}    last character of the Xaxis value
      */
       const CustomXaxis = (value) => {
           return value.substring(value.length - 1 ,value.length)
@@ -141,7 +140,7 @@ function DaylyActivity (props){
 }
 
 
-DaylyActivity.propTypes = {
+DailyActivity.propTypes = {
     /**
      * Url base to call the API
      */
@@ -152,4 +151,4 @@ DaylyActivity.propTypes = {
     userId: PropTypes.number.isRequired
 }
 
-export default DaylyActivity
+export default DailyActivity
